@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHANSTORE - Top Up Diamond Free Fire Legal</title>
+<style>
+  body{margin:0;font-family:Arial,sans-serif;background:#0f0f0f;color:white;text-align:center;padding:15px}
+  .card{max-width:450px;margin:auto;background:linear-gradient(180deg,#2a0000,#120000);border:2px solid #ffcc00;border-radius:20px;padding:20px}
+  .logo{width:110px;height:110px;object-fit:contain;background:white;border-radius:20px;padding:8px;border:3px solid #ffcc00}
+  h1{color:#ffcc00;font-size:32px;margin:10px 0 0;letter-spacing:1px}
+  .input-id{width:100%;padding:15px;border-radius:12px;border:2px solid #ffcc00;font-size:17px;text-align:center;box-sizing:border-box;margin:15px 0 5px;font-weight:bold}
+  .hint{font-size:12px;color:#aaa;margin-bottom:10px}
+  .harga{background:#1c1c1c;border:1px solid #444;border-radius:14px;padding:12px;text-align:left}
+  .harga h3{margin:0 0 10px;text-align:center;color:#ffcc00}
+  .item{display:flex;justify-content:space-between;align-items:center;padding:10px 6px;border-bottom:1px dashed #444;font-size:14px;cursor:pointer}
+  .item:hover{background:#2a2a2a}
+  .item.active{background:#ffcc00;color:black;border-radius:8px}
+  .item.active b{color:black}
+  .item b{color:#ffcc00}
+  .order{display:block;background:#22c55e;color:white;text-align:center;padding:16px;border-radius:12px;font-weight:bold;text-decoration:none;margin-top:15px;font-size:18px;border:none;width:100%;cursor:pointer}
+  .btn-fb{display:block;background:#1877F2;color:white;padding:15px;border-radius:12px;font-weight:bold;text-decoration:none;margin-top:10px}
+  .jam{background:#222;padding:12px;border-radius:12px;margin-top:15px;font-size:13px;line-height:1.6}
+  .legal{background:#003300;border:1px solid #00ff88;color:#00ff88;padding:10px;border-radius:10px;font-size:13px;font-weight:bold;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="card">
+  <img class="logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/Garena_Free_Fire_logo.png/400px-Garena_Free_Fire_logo.png" alt="Free Fire">
+  <h1>CHANSTORE</h1>
+  <p>TOP UP DIAMOND FREE FIRE</p>
+  <div class="legal">✅ TOP UP DIAMONDS LEGAL - 100% AMAN</div>
+  <input class="input-id" id="playerId" type="number" placeholder="MASUKAN PLAYER ID FF KAMU">
+  <div class="hint">Contoh: 1234567890 - Cek ID di Profil Game Kamu</div>
+  <div class="harga">
+    <h3>💎 40 DAFTAR HARGA DIAMOND FF</h3>
+    <div id="listHarga"></div>
+  </div>
+  <button class="order" onclick="orderWA()">🔥 ORDER SEKARANG VIA WA</button>
+  <a class="btn-fb" href="https://facebook.com/chanstore">📘 FACEBOOK CHANSTORE</a>
+  <div class="jam"><b>BUKA 07.00 - 01.00 SETIAP HARI</b><br>Di luar jam itu, chat tetap dibalas besok pagi!<br>WA: 0856-5696-0181</div>
+</div>
+<script>
+const harga = [
+  ["5 Diamond","Rp 1.000"],["12 Diamond","Rp 2.000"],["50 Diamond","Rp 7.000"],
+  ["70 Diamond","Rp 10.000"],["100 Diamond","Rp 14.000"],["140 Diamond","Rp 20.000"],
+  ["150 Diamond","Rp 22.000"],["200 Diamond","Rp 28.000"],["210 Diamond","Rp 30.000"],
+  ["280 Diamond","Rp 40.000"],["355 Diamond","Rp 50.000"],["400 Diamond","Rp 57.000"],
+  ["425 Diamond","Rp 60.000"],["500 Diamond","Rp 70.000"],["545 Diamond","Rp 78.000"],
+  ["600 Diamond","Rp 85.000"],["720 Diamond","Rp 100.000"],["800 Diamond","Rp 112.000"],
+  ["860 Diamond","Rp 120.000"],["1000 Diamond","Rp 140.000"],["1075 Diamond","Rp 150.000"],
+  ["1200 Diamond","Rp 168.000"],["1440 Diamond","Rp 200.000"],["1500 Diamond","Rp 210.000"],
+  ["1800 Diamond","Rp 250.000"],["2000 Diamond","Rp 278.000"],["2180 Diamond","Rp 300.000"],
+  ["2500 Diamond","Rp 345.000"],["2900 Diamond","Rp 400.000"],["3000 Diamond","Rp 415.000"],
+  ["3440 Diamond","Rp 475.000"],["4000 Diamond","Rp 550.000"],["5000 Diamond","Rp 685.000"],
+  ["6000 Diamond","Rp 820.000"],["7000 Diamond","Rp 960.000"],["10000 Diamond","Rp 1.350.000"],
+  ["Member Mingguan","Rp 30.000"],["Member Bulanan","Rp 100.000"],
+  ["Booyah Pass","Rp 50.000"],["Booyah Pass Bundle","Rp 130.000"]
+];
+let pilih = harga[3];
+const list = document.getElementById('listHarga');
+harga.forEach((h,i)=>{
+  let div = document.createElement('div');
+  div.className = 'item' + (i===3 ? ' active' : '');
+  div.innerHTML = `<span>${h[0]}</span><b>${h[1]}</b>`;
+  div.onclick = ()=>{
+    document.querySelectorAll('.item').forEach(e=>e.classList.remove('active'));
+    div.classList.add('active');
+    pilih = h;
+  };
+  list.appendChild(div);
+});
+function orderWA(){
+  let id = document.getElementById('playerId').value;
+  if(!id){ alert('Isi dulu Player ID FF kamu bro!'); return; }
+  let pesan = `Halo CHANSTORE, mau order Diamond FF:%0A%0A- Paket: ${pilih[0]} - ${pilih[1]}%0A- Player ID: ${id}%0A%0AMohon diproses ya min, Top Up Legal. Terima kasih!`;
+  window.open(`https://wa.me/6285656960181?text=${pesan}`,'_blank');
+}
+</script>
+</body>
+</html>
