@@ -3,69 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CHANSTORE - Top Up Diamond Free Fire Legal</title>
+<title>CHANSTORE - Top Up Diamond FF</title>
 <style>
   body{margin:0;font-family:Arial,sans-serif;background:#0f0f0f;color:white;text-align:center;padding:15px}
-  .card{max-width:450px;margin:auto;background:linear-gradient(180deg,#2a0000,#120000);border:2px solid #ffcc00;border-radius:20px;padding:20px}
-  .logo{width:110px;height:110px;object-fit:contain;background:white;border-radius:20px;padding:8px;border:3px solid #ffcc00}
-  h1{color:#ffcc00;font-size:32px;margin:10px 0 0;letter-spacing:1px}
+  .card{max-width:460px;margin:auto;background:#1a0000;border:2px solid #ffcc00;border-radius:20px;padding:18px}
+  h1{color:#ffcc00;font-size:34px;margin:5px 0}
   .input-id{width:100%;padding:15px;border-radius:12px;border:2px solid #ffcc00;font-size:17px;text-align:center;box-sizing:border-box;margin:15px 0 5px;font-weight:bold}
-  .hint{font-size:12px;color:#aaa;margin-bottom:10px}
   .harga{background:#1c1c1c;border:1px solid #444;border-radius:14px;padding:12px;text-align:left}
-  .harga h3{margin:0 0 10px;text-align:center;color:#ffcc00}
-  .item{display:flex;justify-content:space-between;align-items:center;padding:10px 6px;border-bottom:1px dashed #444;font-size:14px;cursor:pointer}
-  .item:hover{background:#2a2a2a}
+  .item{position:relative;display:flex;justify-content:space-between;align-items:center;padding:14px 8px;border-bottom:1px dashed #444;cursor:pointer;font-size:14px;margin-top:18px}
   .item.active{background:#ffcc00;color:black;border-radius:8px}
-  .item.active b{color:black}
-  .item b{color:#ffcc00}
-  .order{display:none;background:#22c55e;color:white;text-align:center;padding:16px;border-radius:12px;font-weight:bold;text-decoration:none;margin-top:15px;font-size:18px;border:none;width:100%;cursor:pointer;animation:muncul .3s ease}
-  @keyframes muncul{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
-  .info-order{background:#222;padding:10px;border-radius:10px;font-size:13px;margin-top:12px;display:none}
-  .jam{background:#222;padding:12px;border-radius:12px;margin-top:15px;font-size:13px;line-height:1.6}
-  .legal{background:#003300;border:1px solid #00ff88;color:#00ff88;padding:10px;border-radius:10px;font-size:13px;font-weight:bold;margin-top:12px}
+  .item b{color:#ffcc00;font-size:15px}.item.active b{color:black}
+  .label{position:absolute;top:-14px;left:0;font-size:10px;font-weight:bold;padding:3px 8px;border-radius:20px;color:white}
+  .hot{background:#ff0000}.laris{background:#ff8800}.hemat{background:#00aa00}.promo{background:#8800ff}.best{background:#0066ff}.baru{background:#00bbbb}
+  .legal{background:#003300;border:1px solid #00ff88;color:#00ff88;padding:10px;border-radius:10px;font-weight:bold;margin-top:10px}
+  /* KONFIRMASI */
+  #konfirmasi{display:none;background:white;color:black;border-radius:16px;padding:18px;margin-top:18px;text-align:left;animation:muncul .3s ease;border:3px solid #ffcc00}
+  @keyframes muncul{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+  #konfirmasi h2{text-align:center;margin:0 0 12px;font-size:19px}
+  .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed #ccc;font-size:14px}
+  .row.total{border:none;font-weight:bold;font-size:16px}
+  .row.total b{color:#00aa00}
+  .btn-wa{display:block;background:#22c55e;color:white;text-align:center;padding:16px;border-radius:12px;font-weight:bold;text-decoration:none;margin-top:14px;font-size:17px}
+  .btn-batal{display:block;text-align:center;padding:10px;color:#888;font-size:13px;margin-top:5px;cursor:pointer}
+  #btnPilih{display:block;width:100%;padding:14px;border-radius:12px;font-weight:bold;font-size:15px;border:none;margin-top:12px;background:#333;color:#aaa}
 </style>
 </head>
 <body>
 <div class="card">
-  <img class="logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/Garena_Free_Fire_logo.png/400px-Garena_Free_Fire_logo.png" alt="Free Fire">
   <h1>CHANSTORE</h1>
   <p>TOP UP DIAMOND FREE FIRE</p>
   <div class="legal">✅ TOP UP DIAMONDS LEGAL - 100% AMAN</div>
-  <input class="input-id" id="playerId" type="number" placeholder="MASUKAN PLAYER ID FF KAMU" oninput="cekOrder()">
-  <div class="hint">Contoh: 1234567890 - Cek ID di Profil Game Kamu</div>
-  <div class="harga">
-    <h3>💎 40 DAFTAR HARGA DIAMOND FF</h3>
-    <div id="listHarga"></div>
+  <input class="input-id" id="playerId" type="number" placeholder="1. MASUKAN PLAYER ID FF KAMU" oninput="cekOrder()">
+  <p style="font-size:12px;color:#aaa">Isi ID dulu, baru pilih Diamond di bawah</p>
+  <div class="harga"><h3 style="text-align:center;color:#ffcc00">💎 2. PILIH DIAMOND</h3><div id="listHarga"></div></div>
+  <button id="btnPilih">⚠️ ISI ID + PILIH DIAMOND DULU</button>
+
+  <!-- INI KONFIRMASI PESANAN - MUNCUL OTOMATIS -->
+  <div id="konfirmasi">
+    <h2>🧾 KONFIRMASI PESANAN</h2>
+    <div class="row"><span>Game</span><b>Free Fire</b></div>
+    <div class="row"><span>Player ID</span><b id="cId">-</b></div>
+    <div class="row"><span>Paket</span><b id="cPaket">-</b></div>
+    <div class="row"><span>Label</span><b id="cLabel" style="color:#ff8800">-</b></div>
+    <div class="row"><span>Metode</span><b>Top Up Legal</b></div>
+    <div class="row total"><span>Total Bayar</span><b id="cHarga">-</b></div>
+    <p style="font-size:12px;color:#666;text-align:center;margin:8px 0 0">Cek lagi ID kamu, kalau salah Diamond masuk ke orang lain!</p>
+    <a class="btn-wa" id="linkWA" href="#" target="_blank">✅ KONFIRMASI & ORDER VIA WA</a>
+    <div class="btn-batal" onclick="batal()">❌ Batal / Ganti Pilihan</div>
   </div>
 
-  <div class="info-order" id="infoOrder"></div>
-  <button class="order" id="btnOrder" onclick="orderWA()">🔥 ORDER SEKARANG VIA WA</button>
-
-  <div class="jam"><b>BUKA 07.00 - 01.00 SETIAP HARI</b><br>Di luar jam itu, chat tetap dibalas besok pagi!<br>WA: 0856-5696-0181</div>
+  <p style="font-size:13px;margin-top:15px">BUKA 07.00 - 01.00<br>WA: 0856-5696-0181</p>
 </div>
 <script>
 const harga = [
-  ["5 Diamond","Rp 1.000"],["12 Diamond","Rp 2.000"],["50 Diamond","Rp 7.000"],
-  ["70 Diamond","Rp 10.000"],["100 Diamond","Rp 14.000"],["140 Diamond","Rp 20.000"],
-  ["150 Diamond","Rp 22.000"],["200 Diamond","Rp 28.000"],["210 Diamond","Rp 30.000"],
-  ["280 Diamond","Rp 40.000"],["355 Diamond","Rp 50.000"],["400 Diamond","Rp 57.000"],
-  ["425 Diamond","Rp 60.000"],["500 Diamond","Rp 70.000"],["545 Diamond","Rp 78.000"],
-  ["600 Diamond","Rp 85.000"],["720 Diamond","Rp 100.000"],["800 Diamond","Rp 112.000"],
-  ["860 Diamond","Rp 120.000"],["1000 Diamond","Rp 140.000"],["1075 Diamond","Rp 150.000"],
-  ["1200 Diamond","Rp 168.000"],["1440 Diamond","Rp 200.000"],["1500 Diamond","Rp 210.000"],
-  ["1800 Diamond","Rp 250.000"],["2000 Diamond","Rp 278.000"],["2180 Diamond","Rp 300.000"],
-  ["2500 Diamond","Rp 345.000"],["2900 Diamond","Rp 400.000"],["3000 Diamond","Rp 415.000"],
-  ["3440 Diamond","Rp 475.000"],["4000 Diamond","Rp 550.000"],["5000 Diamond","Rp 685.000"],
-  ["6000 Diamond","Rp 820.000"],["7000 Diamond","Rp 960.000"],["10000 Diamond","Rp 1.350.000"],
-  ["Member Mingguan","Rp 30.000"],["Member Bulanan","Rp 100.000"],
-  ["Booyah Pass","Rp 50.000"],["Booyah Pass Bundle","Rp 130.000"]
+  ["5 Diamond","Rp 1.000","BARU","baru"],["12 Diamond","Rp 2.000","",""],
+  ["50 Diamond","Rp 7.000","HEMAT","hemat"],["70 Diamond","Rp 10.000","🔥 PALING LARIS","laris"],
+  ["100 Diamond","Rp 14.000","",""],["140 Diamond","Rp 20.000","PROMO","promo"],
+  ["150 Diamond","Rp 22.000","",""],["200 Diamond","Rp 28.000","",""],
+  ["210 Diamond","Rp 30.000","⭐ BEST SELLER","best"],["280 Diamond","Rp 40.000","",""],
+  ["355 Diamond","Rp 50.000","🔥 HOT","hot"],["400 Diamond","Rp 57.000","",""],
+  ["425 Diamond","Rp 60.000","",""],["500 Diamond","Rp 70.000","💰 PALING HEMAT","hemat"],
+  ["545 Diamond","Rp 78.000","",""],["600 Diamond","Rp 85.000","",""],
+  ["720 Diamond","Rp 100.000","⭐ BEST SELLER","best"],["800 Diamond","Rp 112.000","",""],
+  ["860 Diamond","Rp 120.000","",""],["1000 Diamond","Rp 140.000","🔥 PALING LARIS","laris"],
+  ["1075 Diamond","Rp 150.000","",""],["1200 Diamond","Rp 168.000","",""],
+  ["1440 Diamond","Rp 200.000","PROMO","promo"],["1500 Diamond","Rp 210.000","",""],
+  ["1800 Diamond","Rp 250.000","",""],["2000 Diamond","Rp 278.000","💰 HEMAT","hemat"],
+  ["2180 Diamond","Rp 300.000","",""],["2500 Diamond","Rp 345.000","",""],
+  ["2900 Diamond","Rp 400.000","🔥 HOT","hot"],["3000 Diamond","Rp 415.000","",""],
+  ["3440 Diamond","Rp 475.000","",""],["4000 Diamond","Rp 550.000","",""],
+  ["5000 Diamond","Rp 685.000","⭐ BEST SELLER","best"],["6000 Diamond","Rp 820.000","",""],
+  ["7000 Diamond","Rp 960.000","",""],["10000 Diamond","Rp 1.350.000","👑 SULTAN","promo"],
+  ["Member Mingguan","Rp 30.000","🔥 LARIS","laris"],["Member Bulanan","Rp 100.000","💰 HEMAT","hemat"],
+  ["Booyah Pass","Rp 50.000","⭐ BEST SELLER","best"],["Booyah Pass Bundle","Rp 130.000","🔥 HOT","hot"]
 ];
 let pilih = null;
 const list = document.getElementById('listHarga');
-harga.forEach((h,i)=>{
+harga.forEach(h=>{
   let div = document.createElement('div');
   div.className = 'item';
-  div.innerHTML = `<span>${h[0]}</span><b>${h[1]}</b>`;
+  let labelHtml = h[2] ? `<span class="label ${h[3]}">${h[2]}</span>` : '';
+  div.innerHTML = `${labelHtml}<span>${h[0]}</span><b>${h[1]}</b>`;
   div.onclick = ()=>{
     document.querySelectorAll('.item').forEach(e=>e.classList.remove('active'));
     div.classList.add('active');
@@ -76,23 +94,29 @@ harga.forEach((h,i)=>{
 });
 function cekOrder(){
   let id = document.getElementById('playerId').value;
-  let btn = document.getElementById('btnOrder');
-  let info = document.getElementById('infoOrder');
+  let konf = document.getElementById('konfirmasi');
+  let btn = document.getElementById('btnPilih');
   if(id && pilih){
-    btn.style.display = 'block';
-    info.style.display = 'block';
-    info.innerHTML = `Kamu mau order: <b style="color:#ffcc00">${pilih[0]} - ${pilih[1]}</b><br>ID FF: <b style="color:#ffcc00">${id}</b><br>Klik tombol hijau di bawah untuk lanjut ke WA!`;
-    btn.innerHTML = `🔥 ORDER ${pilih[0]} VIA WA`;
-  } else {
     btn.style.display = 'none';
-    info.style.display = 'none';
+    konf.style.display = 'block';
+    document.getElementById('cId').innerText = id;
+    document.getElementById('cPaket').innerText = pilih[0];
+    document.getElementById('cLabel').innerText = pilih[2] || '-';
+    document.getElementById('cHarga').innerText = pilih[1];
+    let pesan = `Halo CHANSTORE, mau KONFIRMASI order Diamond FF:%0A%0A- Game: Free Fire%0A- Player ID: ${id}%0A- Paket: ${pilih[0]} - ${pilih[1]} ${pilih[2] ? '('+pilih[2]+')' : ''}%0A%0ASaya sudah cek ID benar. Mohon diproses ya min, Top Up Legal.`;
+    document.getElementById('linkWA').href = `https://wa.me/6285656960181?text=${pesan}`;
+    konf.scrollIntoView({behavior:'smooth'});
+  } else {
+    konf.style.display = 'none';
+    btn.style.display = 'block';
+    btn.innerText = '⚠️ ISI ID + PILIH DIAMOND DULU';
   }
 }
-function orderWA(){
-  let id = document.getElementById('playerId').value;
-  if(!id || !pilih){ return; }
-  let pesan = `Halo CHANSTORE, mau order Diamond FF:%0A%0A- Paket: ${pilih[0]} - ${pilih[1]}%0A- Player ID: ${id}%0A%0AMohon diproses ya min, Top Up Legal. Terima kasih!`;
-  window.open(`https://wa.me/6285656960181?text=${pesan}`,'_blank');
+function batal(){
+  document.querySelectorAll('.item').forEach(e=>e.classList.remove('active'));
+  pilih = null;
+  cekOrder();
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
 </body>
