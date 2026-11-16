@@ -18,8 +18,9 @@
   .item.active{background:#ffcc00;color:black;border-radius:8px}
   .item.active b{color:black}
   .item b{color:#ffcc00}
-  .order{display:block;background:#22c55e;color:white;text-align:center;padding:16px;border-radius:12px;font-weight:bold;text-decoration:none;margin-top:15px;font-size:18px;border:none;width:100%;cursor:pointer}
-  .btn-fb{display:block;background:#1877F2;color:white;padding:15px;border-radius:12px;font-weight:bold;text-decoration:none;margin-top:10px}
+  .order{display:none;background:#22c55e;color:white;text-align:center;padding:16px;border-radius:12px;font-weight:bold;text-decoration:none;margin-top:15px;font-size:18px;border:none;width:100%;cursor:pointer;animation:muncul .3s ease}
+  @keyframes muncul{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+  .info-order{background:#222;padding:10px;border-radius:10px;font-size:13px;margin-top:12px;display:none}
   .jam{background:#222;padding:12px;border-radius:12px;margin-top:15px;font-size:13px;line-height:1.6}
   .legal{background:#003300;border:1px solid #00ff88;color:#00ff88;padding:10px;border-radius:10px;font-size:13px;font-weight:bold;margin-top:12px}
 </style>
@@ -30,14 +31,16 @@
   <h1>CHANSTORE</h1>
   <p>TOP UP DIAMOND FREE FIRE</p>
   <div class="legal">✅ TOP UP DIAMONDS LEGAL - 100% AMAN</div>
-  <input class="input-id" id="playerId" type="number" placeholder="MASUKAN PLAYER ID FF KAMU">
+  <input class="input-id" id="playerId" type="number" placeholder="MASUKAN PLAYER ID FF KAMU" oninput="cekOrder()">
   <div class="hint">Contoh: 1234567890 - Cek ID di Profil Game Kamu</div>
   <div class="harga">
     <h3>💎 40 DAFTAR HARGA DIAMOND FF</h3>
     <div id="listHarga"></div>
   </div>
-  <button class="order" onclick="orderWA()">🔥 ORDER SEKARANG VIA WA</button>
-  <a class="btn-fb" href="https://facebook.com/chanstore">📘 FACEBOOK CHANSTORE</a>
+
+  <div class="info-order" id="infoOrder"></div>
+  <button class="order" id="btnOrder" onclick="orderWA()">🔥 ORDER SEKARANG VIA WA</button>
+
   <div class="jam"><b>BUKA 07.00 - 01.00 SETIAP HARI</b><br>Di luar jam itu, chat tetap dibalas besok pagi!<br>WA: 0856-5696-0181</div>
 </div>
 <script>
@@ -57,22 +60,37 @@ const harga = [
   ["Member Mingguan","Rp 30.000"],["Member Bulanan","Rp 100.000"],
   ["Booyah Pass","Rp 50.000"],["Booyah Pass Bundle","Rp 130.000"]
 ];
-let pilih = harga[3];
+let pilih = null;
 const list = document.getElementById('listHarga');
 harga.forEach((h,i)=>{
   let div = document.createElement('div');
-  div.className = 'item' + (i===3 ? ' active' : '');
+  div.className = 'item';
   div.innerHTML = `<span>${h[0]}</span><b>${h[1]}</b>`;
   div.onclick = ()=>{
     document.querySelectorAll('.item').forEach(e=>e.classList.remove('active'));
     div.classList.add('active');
     pilih = h;
+    cekOrder();
   };
   list.appendChild(div);
 });
+function cekOrder(){
+  let id = document.getElementById('playerId').value;
+  let btn = document.getElementById('btnOrder');
+  let info = document.getElementById('infoOrder');
+  if(id && pilih){
+    btn.style.display = 'block';
+    info.style.display = 'block';
+    info.innerHTML = `Kamu mau order: <b style="color:#ffcc00">${pilih[0]} - ${pilih[1]}</b><br>ID FF: <b style="color:#ffcc00">${id}</b><br>Klik tombol hijau di bawah untuk lanjut ke WA!`;
+    btn.innerHTML = `🔥 ORDER ${pilih[0]} VIA WA`;
+  } else {
+    btn.style.display = 'none';
+    info.style.display = 'none';
+  }
+}
 function orderWA(){
   let id = document.getElementById('playerId').value;
-  if(!id){ alert('Isi dulu Player ID FF kamu bro!'); return; }
+  if(!id || !pilih){ return; }
   let pesan = `Halo CHANSTORE, mau order Diamond FF:%0A%0A- Paket: ${pilih[0]} - ${pilih[1]}%0A- Player ID: ${id}%0A%0AMohon diproses ya min, Top Up Legal. Terima kasih!`;
   window.open(`https://wa.me/6285656960181?text=${pesan}`,'_blank');
 }
